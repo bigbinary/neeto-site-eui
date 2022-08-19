@@ -9,10 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@bigbinary/neeto-site-blocks": "https://github.com/bigbinary/neeto-site-blocks.git",
+    "axios": "^0.27.2",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "@bigbinary/neeto-site-blocks": "https://github.com/bigbinary/neeto-site-blocks.git"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "eslint": "8.22.0",
