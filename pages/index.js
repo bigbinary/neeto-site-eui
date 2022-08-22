@@ -43,11 +43,8 @@ export default function Home({ site }) {
 
 export async function getServerSideProps(context) {
   try {
-    const subdomain =
-      process.env.NODE_ENV == "development"
-        ? "lively-shadow-9311"
-        : context.req.headers.host.split(".")[0] || "bigbinary";
-
+    const subdomain = context.req.headers.host.split(".")[0];
+    // ADD FALLBACK IF SUBDOMAIN IS NOT FOUND
     const res = await axios.get(
       `${process.env.SERVER_HOST_WITH_PROTOCOL}/public/sites/${subdomain}`,
       {
