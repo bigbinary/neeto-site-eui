@@ -4,6 +4,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
     "node_modules/@bigbinary/neeto-site-blocks/dist/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [{
+    pattern: /./
+  }],
   theme: {
     extend: {},
   },
