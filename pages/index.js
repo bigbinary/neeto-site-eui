@@ -26,9 +26,11 @@ export default function Home({ site }) {
     footer: Footer,
   };
 
+  const { configuration: siteConfiguration } = site;
+
   return (
     <>
-      {site?.pages[0].blocks.map((block) => {
+      {siteConfiguration.pages[0].blocks.map((block) => {
         const BlockComponent = blockComponents[block.name];
         return (
           <BlockComponent
@@ -46,14 +48,14 @@ export async function getServerSideProps(context) {
     const subdomain = context.req.headers.host.split(".")[0];
     // ADD FALLBACK IF SUBDOMAIN IS NOT FOUND
     const res = await axios.get(
-      `${process.env.SERVER_HOST_WITH_PROTOCOL}/public/sites/${subdomain}`,
+      `${process.env.SERVER_HOST_WITH_PROTOCOL}/public/published_sites/${subdomain}`,
       {
         headers: {
           Accept: "*/*",
         },
       }
     );
-
+    console.log(res.data);
     return { props: { site: res.data } };
   } catch (error) {
     console.log(error);
