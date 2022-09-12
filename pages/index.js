@@ -12,7 +12,7 @@ import {
   Footer,
 } from "@bigbinary/neeto-site-blocks";
 
-export default function Home({ site }) {
+export default function Home({ site = {} }) {
   const blockComponents = {
     header: Header,
     hero: HeroSection,
@@ -26,11 +26,11 @@ export default function Home({ site }) {
     footer: Footer,
   };
 
-  const { configuration: siteConfiguration } = site;
+  const { configuration: siteConfiguration = null } = site;
 
   return (
     <>
-      {siteConfiguration.pages[0].blocks.map((block) => {
+      {siteConfiguration?.pages[0].blocks.map((block) => {
         const BlockComponent = blockComponents[block.name];
         return (
           <BlockComponent
@@ -45,8 +45,22 @@ export default function Home({ site }) {
 
 export async function getServerSideProps(context) {
   try {
-    const subdomain = context.req.headers.host.split(".")[0];
-    // ADD FALLBACK IF SUBDOMAIN IS NOT FOUND
+    const host = context.req.headers.host.split(".");
+    const isDevelopment = host.includes("localhost:3000");
+    const redirectToNeetoSite = isDevelopment
+      ? host.length <= 1
+      : host.length <= 2;
+
+    if (redirectToNeetoSite) {
+      return {
+        redirect: {
+          destination: "https://neeto.com",
+          permanent: false,
+        },
+      };
+    }
+
+    const subdomain = host[0];
     const res = await axios.get(
       `${process.env.SERVER_HOST_WITH_PROTOCOL}/public/published_sites/${subdomain}`,
       {
