@@ -17,10 +17,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@bigbinary/neeto-site-blocks@^0.0.19":
-  version "0.0.19"
-  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-site-blocks/-/neeto-site-blocks-0.0.19.tgz#3da749d00def95225edb78fc8ddc534c7f239313"
-  integrity sha512-5xXM81CKhD1SHL1IG3SG+wabriLgQGEnIAH8L/Nxrhj5eXwBmIWtRs82HAuOrNLcP6k3gzosJbkXY0/uURxVbQ==
+"@bigbinary/neeto-site-blocks@^0.0.20":
+  version "0.0.20"
+  resolved "https://registry.yarnpkg.com/@bigbinary/neeto-site-blocks/-/neeto-site-blocks-0.0.20.tgz#3fae9d9bb027dc22a1456ac4f69ce2360167dda9"
+  integrity sha512-trCKm4EIsSDbH02weUAAa/UKPMaVjpq46RmEHc/yjVP/I4FMgLvYCrR4Tnj4vBg+PErWkMIlvSAcGN2UpFo7WQ==
 
 "@eslint/eslintrc@^1.3.0":
   version "1.3.0"
