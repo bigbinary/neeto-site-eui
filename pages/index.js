@@ -31,7 +31,7 @@ export default function Home({ site = {} }) {
   const { configuration: siteConfiguration = null } = site;
 
   return (
-    <>
+    <div className="mx-auto max-w-7xl">
       {siteConfiguration?.pages[0].blocks.map((block) => {
         const BlockComponent = blockComponents[block.name];
         return (
@@ -41,7 +41,7 @@ export default function Home({ site = {} }) {
           />
         );
       })}
-    </>
+    </div>
   );
 }
 
