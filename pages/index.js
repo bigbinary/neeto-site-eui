@@ -1,4 +1,5 @@
 import axios from "axios";
+import Head from "next/head";
 import {
   Header,
   HeroSection,
@@ -28,9 +29,13 @@ export default function Home({ site = {} }) {
     footer: Footer,
   };
 
-  const { configuration: siteConfiguration = null } = site;
+  const { configuration: siteConfiguration = null, site_title } = site;
 
   return (
+    <>
+    <Head>
+        <title>{site_title}</title>
+    </Head>
     <div className="mx-auto max-w-7xl">
       {siteConfiguration?.pages[0].blocks.map((block) => {
         const BlockComponent = blockComponents[block.name];
@@ -42,6 +47,7 @@ export default function Home({ site = {} }) {
         );
       })}
     </div>
+    </>
   );
 }
 
