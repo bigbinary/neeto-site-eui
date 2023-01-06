@@ -29,12 +29,15 @@ export default function Home({ site = {} }) {
     footer: Footer,
   };
 
-  const { configuration: siteConfiguration = null, name } = site;
+  const { configuration: siteConfiguration = null, name, meta_description } = site;
 
   return (
     <>
     <Head>
         <title>{name}</title>
+        <meta name="description" content={meta_description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="keywords" content={name}/>
     </Head>
     <div className="mx-auto max-w-7xl">
       {siteConfiguration?.pages[0].blocks.map((block) => {
