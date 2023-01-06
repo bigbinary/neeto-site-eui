@@ -29,12 +29,12 @@ export default function Home({ site = {} }) {
     footer: Footer,
   };
 
-  const { configuration: siteConfiguration = null, site_title } = site;
+  const { configuration: siteConfiguration = null, name } = site;
 
   return (
     <>
     <Head>
-        <title>{site_title}</title>
+        <title>{name}</title>
     </Head>
     <div className="mx-auto max-w-7xl">
       {siteConfiguration?.pages[0].blocks.map((block) => {
