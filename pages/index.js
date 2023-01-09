@@ -1,4 +1,5 @@
 import axios from "axios";
+import Head from "next/head";
 import {
   Header,
   HeroSection,
@@ -28,9 +29,22 @@ export default function Home({ site = {} }) {
     footer: Footer,
   };
 
-  const { configuration: siteConfiguration = null } = site;
+  const { configuration: siteConfiguration = null, name, meta_description } = site;
 
   return (
+    <>
+    <Head>
+        <title>{name}</title>
+        <meta name="description" content={meta_description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:description" content={meta_description}/>
+        <meta name="twitter:site" content={name}/>
+        <meta property="og:title" content={name}/>
+        <meta property="og:description" content={meta_description}/>
+        <meta property="og:site_name" content={name}/>
+        <meta property="og:type" content="website" />
+    </Head>
     <div className="mx-auto max-w-7xl">
       {siteConfiguration?.pages[0].blocks.map((block) => {
         const BlockComponent = blockComponents[block.name];
@@ -42,6 +56,7 @@ export default function Home({ site = {} }) {
         );
       })}
     </div>
+    </>
   );
 }
 
